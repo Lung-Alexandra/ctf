@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Sky ☁️ Blog</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .post {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="bg-gray-600 text-white shadow-md rounded-lg p-8 max-w-4xl mx-auto mt-12">
+        <h1>{{ .CoolSentence }}!</h1>
+        <p>Welcome to my ‧₊˚ ☁️⋅♡🪐༘⋆ Blog !</p>
+
+        <a href="/post" class="btn btn-primary">Post something</a>
+        <a href="/flag" class="btn btn-primary">Grab a flag</a>
+        <a href="/profile" class="btn btn-primary">Change me !</a>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+      </div>
+      <div class="posts">
+        Posts: {{range .Posts}}
+        <div class="p-4 rounded-lg bg-gray-100 my-10">
+          <div class="tint">
+            <div class="container position-relative px-4 px-lg-5">
+              <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                  <div class="post-heading mt-3">
+                    <h1 class="text-3xl font-bold">{{.Title}}</h1>
+                    <span class="meta">
+                      Posted by {{.Author.Username}} at {{.UpdatedAt.Format "02 Jan 06 15:04"}}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+              <div class="col-md-10 col-lg-8 col-xl-7">
+                <pre class="content">{{.Body}}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+  </body>
+</html>
